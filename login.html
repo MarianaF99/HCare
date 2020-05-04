@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HCare</title>
+    <meta name="description" content="HCare é um site de médicos ao domicilio">
+
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a href="index.html" class="navbar-brand">
+            <img src="img/logo.png" height="45" alt="Logo">
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="#" class="nav-item nav-link">Search Doctor </a>
+            </div>
+            <div class="navbar-nav ml-auto">
+                <a href="login.html" class="nav-item nav-link active">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Login to your account</h2>
+                    <hr>
+                </div>
+                <div class="col-md-12">
+                    <form onsubmit="return ProcessLoginForm(event);" action="index.html" role="form">
+                        <div class="form-group col-md-6">
+                            <input type="email" class="form-control br-radius-zero" placeholder="Your Email" />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <input type="password" class="form-control br-radius-zero" placeholder="Your Password" data-rule="minlen:4" />
+                        </div>
+                        </br>
+                        <input type="submit" class="btn btn-form" value="Login" />
+                    </form>
+                </div>
+    </section>
+
+
+
+    <footer class="customFooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h6>About</h6>
+                    <p class="text-justify">Page in development phase.</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
+                        <a href="#">HCare</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
