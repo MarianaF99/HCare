@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 
-<body>
+<body onload="OnPageLoaded()">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <a href="index.html" class="navbar-brand">
             <img src="img/logo.png" height="45" alt="Logo">
@@ -27,8 +27,10 @@
                 <a href="#" class="nav-item nav-link">Search Doctor </a>
             </div>
             <div class="navbar-nav ml-auto">
-                <a href="login.html" class="nav-item nav-link">Login</a>
+                <a href="#" id="loginStatus" onclick="ProcessLoginLogout(); return false;"
+                    class="nav-item nav-link"></a>
                 <a href="register.html" class="nav-item nav-link active">Register</a>
+                <a href="editprofile.html" class="nav-item nav-link">EditProfile</a>
             </div>
         </div>
     </nav>
@@ -48,7 +50,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h6>In this web page you will be able to contact doctors and they will come to your home to give you the assistance you need.</h6>
+                <h6>In this web page you will be able to contact doctors and they will come to your home to give you the
+                    assistance you need.</h6>
             </div>
         </div>
         <hr>

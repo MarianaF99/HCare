@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HCare</title>
+    <meta name="description" content="HCare é um site de médicos ao domicilio">
+
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+</head>
+
+<body onload="OnPageLoaded()">
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a href="index.html" class="navbar-brand">
+            <img src="img/logo.png" height="45" alt="Logo">
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="#" class="nav-item nav-link">Search Doctor </a>
+            </div>
+            <div class="navbar-nav ml-auto">
+                <a href="#" id="loginStatus" onclick="ProcessLoginLogout(); return false;"
+                    class="nav-item nav-link active"></a>
+                <a href="register.html" class="nav-item nav-link">Register</a>
+                <a href="editprofile.html" class="nav-item nav-link active">EditProfile</a>
+
+            </div>
+        </div>
+    </nav>
+
+    <hr>
+    <div class="container bootstrap snippet">
+        <div class="row">
+            <div class="col-sm-10">
+                <h1>Edit Profile</h1>
+            </div>
+
+        </div>
+        <div class="row">
+            <!--  <div class="col-sm-3">
+                eft col
+
+
+                <div class="text-center">
+        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+        <h6>Upload a different photo...</h6>
+        <input type="file" class="text-center center-block file-upload">
+      </div></hr><br> 
+
+            </div>
+        -->
+            <div class="tab-content">
+                <div class="tab-pane active">
+                    <hr>
+                    <form onsubmit="ProcessEditProfileForm(event);" role="form">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="editName">
+                                        <h4>First name</h4>
+                                    </label>
+                                    <input type="text" class="form-control" id="editName" placeholder="first name"
+                                        title="enter your first name if any.">
+                                </div>
+                                <div class="form-group">
+                                    <label for="editLastName">
+                                        <h4>Last name</h4>
+                                    </label>
+                                    <input type="text" class="form-control" id="editLastName" placeholder="last name"
+                                        title="enter your last name if any.">
+                                </div>
+                                <div class="form-group">
+                                    <label for="editMobile">
+                                        <h4>Mobile</h4>
+                                    </label>
+                                    <input type="text" class="form-control" id="editMobile"
+                                        placeholder="enter mobile number" title="enter your mobile number if any.">
+                                </div>
+                                <div class="form-group">
+                                    <label for="editEmail">
+                                        <h4>Email</h4>
+                                    </label>
+                                    <input type="email" class="form-control" id="editEmail" placeholder="you@email.com"
+                                        title="enter your email." disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="editLocation">
+                                        <h4>Location</h4>
+                                    </label>
+                                    <input type="text" class="form-control" id="editLocation" placeholder="somewhere"
+                                        title="enter a location">
+                                </div>
+                                <div class="form-group">
+                                    <label for="editPass">
+                                        <h4>Password</h4>
+                                    </label>
+                                    <input type="password" class="form-control" id="editPass" placeholder="password"
+                                        title="enter your password.">
+                                </div>
+                                <div class="form-group">
+                                    <label for="editPassVerify">
+                                        <h4>Verify</h4>
+                                    </label>
+                                    <input type="password" class="form-control" id="editPassVerify"
+                                        placeholder="password2" title="enter your password2.">
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-lg btn-success" value="Register" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="customFooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h6>About</h6>
+                    <p class="text-justify">Page in development phase.</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
+                        <a href="#">HCare</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+
+</html>
