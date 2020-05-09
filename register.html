@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 
-<body onload="OnPageLoaded()">
+<body onload="OnPageLoadedProcessLoginState()">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <a href="index.html" class="navbar-brand">
             <img src="img/logo.png" height="45" alt="Logo">
@@ -27,8 +27,7 @@
                 <a href="#" class="nav-item nav-link">Search Doctor </a>
             </div>
             <div class="navbar-nav ml-auto">
-                <a href="#" id="loginStatus" onclick="ProcessLoginLogout(); return false;"
-                    class="nav-item nav-link"></a>
+                <a href="#" id="loginStatus" onclick="ProcessLoginLogout(); return false;" class="nav-item nav-link"></a>
                 <a href="register.html" class="nav-item nav-link active">Register</a>
                 <a href="editprofile.html" class="nav-item nav-link">EditProfile</a>
             </div>
@@ -42,21 +41,78 @@
                     <h2>Register your account</h2>
                     <hr>
                 </div>
-                <div class="col-md-12">
-                    <form onsubmit="ProcessRegisterForm(event);" role="form">
-                        <div class="form-group col-md-6">
-                            <input id="registerEmail" type="email" class="form-control br-radius-zero"
-                                placeholder="Your Email" />
+            </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form onsubmit="ProcessRegisterForm(event); return false;" role="form">
+
+                        <div class="form-row">
+
+                            <div class="col form-group br-radius-zero">
+                                <label>First name </label>
+                                <input type="text" id="registerFirstName" class="form-control" placeholder="" required>
+                            </div>
+
+                            <div class="col form-group br-radius-zero">
+                                <label>Last name</label>
+                                <input type="text" id="registerLastName" class="form-control" placeholder=" " required>
+                            </div>
+
                         </div>
 
-                        <div class="form-group col-md-6">
-                            <input id="registerPassword" type="password" class="form-control br-radius-zero"
-                                placeholder="Your Password" data-rule="minlen:4" />
+                        <div class="form-group br-radius-zero">
+                            <label>Email address</label>
+                            <input type="email" id="registerEmail" class="form-control" placeholder="" required>
                         </div>
-                        </br>
-                        <input type="submit" class="btn btn-form" value="Register" />
+
+                        <div class="form-row">
+
+                            <div class="col form-group br-radius-zero">
+                                <label>Date of Birth</label>
+                                <input type="date" id="registerDateOfBirth" class="form-control" placeholder="Date Of Birth" name="birthday" required>
+                            </div>
+
+                            <div class="col form-group br-radius-zero">
+                                <label>Gender</label>
+                                <select id="registerGender" class="form-control"> 
+                                    <option value="Male"> Male </option> 
+                                    <option value="Female">Female</option> 
+                                    <option value="Other" selected="selected" >Other</option> 
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group br-radius-zero" required>
+                            <label>Address</label>
+                            <input type="text" id="registerAddress" class="form-control">
+                        </div>
+
+                        <div class="form-group br-radius-zero" required>
+                            <label>Telephone</label>
+                            <input class="form-control" type="tel" placeholder="+351" id="registerPhone" />
+                        </div>
+
+                        <div class="form-group br-radius-zero" required>
+                            <label>Create password</label>
+                            <input class="form-control" id="registerPassword" type="password">
+                        </div>
+                        <div class="form-group br-radius-zero" required>
+                            <label>Confirm password</label>
+                            <input class="form-control" id="registerPasswordConfirmation" type="password">
+                        </div>
+
+                        <div class="form-group br-radius-zero">
+                            <label style="color:red" id="errorRegisterMessage"></label>
+
+                            <button type="submit" class="btn btn-primary btn-block"> Register </button>
+                        </div>
+
                     </form>
                 </div>
+            </div>
+        </div>
+
     </section>
 
 

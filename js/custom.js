@@ -1,13 +1,114 @@
-function OnPageLoaded() {
+function OnPageLoadedProcessLoginState() {
     var loginInformation = GetLoginUser()
 
     if (loginInformation.loginStatus != undefined) {
         document.getElementById("loginStatus").innerHTML = "Logout"
-    }
-    else {
+    } else {
         document.getElementById("loginStatus").innerHTML = "Login"
     }
 }
+
+function GetUserByEmail(email, users) {
+
+    var index = -1
+    for (var i = 0;
+        (i < users.length) && (index == -1); i++) {
+        if (users[i].email === email) {
+            index = i
+        }
+    }
+
+    return index
+}
+
+function ProcessEditProfileForm(e) {
+
+    e.preventDefault()
+
+    var users = GetAllUsersFromLocalStorage()
+    var loginInformation = GetLoginUser()
+
+    var sucess = false
+    var erroMessage = ""
+    var isUserChangingPassword = false
+
+    if ((document.getElementById("editPassword").value != "") || (document.getElementById("editPasswordConfirmation").value != "")) {
+        isUserChangingPassword = true
+    }
+
+    if (document.getElementById("editPassword").value != document.getElementById("editPasswordConfirmation").value) {
+        erroMessage += "New Passwords does not match. Leave blank to not change password.</br>"
+    }
+
+    document.getElementById("errorEditMessage").innerHTML = erroMessage
+
+    if (erroMessage === "") {
+
+        if (loginInformation.loginStatus != undefined) {
+
+            var index = GetUserByEmail(loginInformation.email, users)
+
+            if (index != -1) {
+
+                users[index].firstName = document.getElementById("editFirstName").value
+                users[index].lastName = document.getElementById("editLastName").value
+                users[index].address = document.getElementById("editAddress").value
+                users[index].phone = document.getElementById("editPhone").value
+
+                if (isUserChangingPassword === true) {
+                    users[index].password = document.getElementById("editPassword").value
+                }
+
+                localStorage.setItem("users", JSON.stringify(users));
+                sucess = true
+
+            }
+        }
+    }
+    if (sucess === true) {
+        document.getElementById("sucessEditMessage").innerHTML = "Data has been updated."
+    } else {
+        document.getElementById("sucessEditMessage").innerHTML = ""
+    }
+}
+
+
+
+function OnPageLoadedFillProfileInformation() {
+    var loginInformation = GetLoginUser()
+
+    if (loginInformation.loginStatus != undefined) {
+        /* User is Logggd in */
+        var user = GetLoginUserData(loginInformation.email)
+
+        if (user != undefined) {
+            document.getElementById("editFirstName").value = user.firstName
+            document.getElementById("editLastName").value = user.lastName
+            document.getElementById("editAddress").value = user.address
+            document.getElementById("editPhone").value = user.phone
+
+        } else {
+            alert("errrrrror")
+        }
+    } else {
+        /* no use logged im */
+        window.location.href = "index.html"
+    }
+}
+
+function GetLoginUserData(email) {
+    let user = undefined
+    var users = GetAllUsersFromLocalStorage()
+
+    for (var i = 0; i < users.length; i++) {
+        if (users[i].email === email) {
+            user = Object.create(users[i])
+        }
+    }
+
+    return user
+}
+
 
 function ProcessLoginLogout() {
 
@@ -17,8 +118,7 @@ function ProcessLoginLogout() {
         /* a fazer logout */
         localStorage.removeItem("loginInformation")
         window.location.href = "index.html"
-    }
-    else {
+    } else {
         window.location.href = "login.html"
     }
 }
@@ -65,84 +165,54 @@ function ProcessLoginForm(e) {
     return result
 }
 
+function IsEmailDuplicated(email, users) {
 
-function PrintAllUsersProfilesFromLocalStorage() {
-    var userProfiles = GetAllUsersProfilesFromLocalStorage()
-
-    userProfiles.forEach(function (userProfile, i) {
-        console.log(i + " - " + userProfile.email + " %% " + userProfile.name + " %% " + userProfile.lastName + " %% " + userProfile.mobile + " %% " + userProfile.location)
-    });
-}
-
-function ProcessEditProfileForm(e) {
-
-    e.preventDefault()
-
-    var userProfiles = GetAllUsersProfilesFromLocalStorage()
-
-    let userProfile = {
-        email: "andrea@gmail.com",//document.getElementById("editEmail").value,
-        name: document.getElementById("editName").value,
-        lastName: document.getElementById("editLastName").value,
-        mobile: document.getElementById("editMobile").value,
-        location: document.getElementById("editLocation").value,
-
-    }
-
-    var index = GetUserProfileFromEmail(userProfile.email, userProfiles)
-
-    if (index == -1) {
-        userProfiles.push(userProfile);
-        alert("1")
-
-    } else {
-        userProfiles[index].email = userProfile.email
-        userProfiles[index].name = userProfile.name
-        userProfiles[index].lastName = userProfile.lastName
-        userProfiles[index].mobile = userProfile.mobile
-        userProfiles[index].location = userProfile.location
-        alert("2")
-
-    }
-
-
-    localStorage.setItem("userProfiles", JSON.stringify(userProfiles));
-
-    PrintAllUsersProfilesFromLocalStorage()
-
-    return false
-}
-
-function GetUserProfileFromEmail(email, userProfiles) {
-
-    var index = -1
-    for (var i = 0; (i < userProfiles.length) && (index == -1); i++) {
-        if (userProfiles[i].email === email) {
-            index = i
+    var duplicate = false
+    for (var i = 0;
+        (i < users.length) && (duplicate == false); i++) {
+        if (users[i].email === email) {
+            duplicate = true
         }
     }
 
-    return index
+    return duplicate
 }
 
 function ProcessRegisterForm(e) {
 
     e.preventDefault()
-    var users = GetAllUsersFromLocalStorage()
 
-    let user = {
-        email: document.getElementById("registerEmail").value,
-        password: document.getElementById("registerPassword").value
+    var users = GetAllUsersFromLocalStorage()
+    var erroMessage = ""
+
+    if (document.getElementById("registerPassword").value != document.getElementById("registerPasswordConfirmation").value) {
+        erroMessage += "New Passwords does not match. Leave blank to not change password.</br>"
     }
 
-    users.push(user);
+    if (IsEmailDuplicated(document.getElementById("registerEmail").value, users) === true) {
+        erroMessage += "Email exists already.</br>"
+    }
 
-    localStorage.setItem("users", JSON.stringify(users));
+    document.getElementById("errorRegisterMessage").innerHTML = erroMessage
 
+    if (erroMessage === "") {
+        let user = {
+            firstName: document.getElementById("registerFirstName").value,
+            lastName: document.getElementById("registerLastName").value,
+            email: document.getElementById("registerEmail").value,
+            dateOfBirth: document.getElementById("registerDateOfBirth").value,
+            gender: document.getElementById("registerGender").value,
+            address: document.getElementById("registerAddress").value,
+            phone: document.getElementById("registerPhone").value,
+            password: document.getElementById("registerPassword").value
+        }
 
-    alert("Registo com sucesso")
+        users.push(user);
 
-    return false
+        localStorage.setItem("users", JSON.stringify(users));
+
+        window.location.href = "index.html"
+    }
 }
 
 function GetAllUsersFromLocalStorage() {
@@ -150,21 +220,17 @@ function GetAllUsersFromLocalStorage() {
 
     return users;
 }
-function GetAllUsersProfilesFromLocalStorage() {
-    var userProfiles = JSON.parse(localStorage.getItem("userProfiles") || "[]");
-
-    return userProfiles;
-}
 
 function PrintAllUsersFromLocalStorage() {
     var users = GetAllUsersFromLocalStorage()
 
-    users.forEach(function (user, i) {
-        console.log(i + " - " + user.email + " %% " + user.password)
+    users.forEach(function(user, i) {
+        console.log(i + " - " + user.firstName + " %% " + user.lastName +
+            " %% " + user.email + " %% " + user.dateOfBirth +
+            " %% " + user.phone + " %% " + user.gender +
+            " %% " + user.address + " %% " + user.password)
     });
 }
-
-
 
 function ValidateLogin(email, password) {
 
@@ -173,7 +239,7 @@ function ValidateLogin(email, password) {
 
     let result = false;
 
-    users.forEach(function (user, i) {
+    users.forEach(function(user, i) {
 
         if (user.email === email && user.password === password) {
             result = true;

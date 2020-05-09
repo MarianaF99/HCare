@@ -6,7 +6,9 @@ body {
     font-size: 16px;
 }
 
+
 /* Main Page */
+
 .BoxImageWithText {
     position: relative;
     text-align: center;
@@ -35,9 +37,7 @@ body {
 /* Footer */
 
 .customFooter {
-    position: absolute;
     width: 100%;
-    bottom: 0;
     background-color: #26272b;
     padding: 45px 0 20px;
     font-size: 15px;
