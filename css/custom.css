@@ -1,3 +1,5 @@
+/* ################ MAIN ELEMENTS ################ */
+
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 20px;
@@ -7,7 +9,77 @@ body {
 }
 
 
-/* Main Page */
+/* ################ MODAL ################ */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    /* Show above everything else */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: none;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px;
+    -webkit-animation: fadeInDown 500ms ease-in-out;
+    animation: fadeInDown 500ms ease-in-out;
+}
+
+.closeModal {
+    color: #aaa;
+    height: 25px;
+    width: 25px;
+}
+
+.closeModal:hover,
+.close:focus {
+    color: rgb(22, 17, 17);
+    cursor: pointer;
+}
+
+
+/* ################ ANIMATION ################ */
+
+
+/* Chrome, Safari, Opera */
+
+@-webkit-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+
+/* Standard syntax */
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ################ MAIN PAGE ################ */
 
 .BoxImageWithText {
     position: relative;
@@ -34,7 +106,7 @@ body {
 }
 
 
-/* Footer */
+/* ################ FOOTER ################ */
 
 .customFooter {
     width: 100%;
