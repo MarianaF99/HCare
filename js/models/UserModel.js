@@ -57,10 +57,15 @@ export default class LoginModel {
         return this.users
     }
 
-    CreateUser(firstName, surname, email, dateOfBirth, gender, address, phone, password) {
-        var newUser = new User(firstName, surname, email, dateOfBirth, gender, address, phone, password);
+    CreateUser(firstName, surname, email, dateOfBirth, gender, address, phone, password, avatarSourceImage) {
+        var newUser = new User(firstName, surname, email, dateOfBirth, gender, address, phone, password, avatarSourceImage);
         this.users.push(newUser);
         this._Persist();
+    }
+
+    _ClearPersistent() {
+        this.users = []
+        localStorage.setItem('users', JSON.stringify(this.users))
     }
 
     PrintAllUsersFromLocalStorage() {
@@ -69,7 +74,7 @@ export default class LoginModel {
             console.log(i + " - " + user.firstName + " %% " + user.surname +
                 " %% " + user.email + " %% " + user.dateOfBirth +
                 " %% " + user.phone + " %% " + user.gender +
-                " %% " + user.address + " %% " + user.password)
+                " %% " + user.address + " %% " + user.password + " %% " + user.avatarSourceImage)
         });
     }
 

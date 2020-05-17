@@ -49,9 +49,9 @@ export default class UserController {
         }
     }
 
-    CreateUser(firstName, surname, email, dateOfBirth, gender, address, phone, password) {
+    CreateUser(firstName, surname, email, dateOfBirth, gender, address, phone, password, avatarSourceImage) {
         if (!this.userModel.GetAllUsers().some(user => user.email === email)) {
-            this.userModel.CreateUser(firstName, surname, email, dateOfBirth, gender, address, phone, password)
+            this.userModel.CreateUser(firstName, surname, email, dateOfBirth, gender, address, phone, password, avatarSourceImage)
         } else {
             throw Error(`The email "${email}" specified is already in use by somebody else.`)
         }
