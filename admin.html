@@ -44,62 +44,66 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <a href="index.html" class="navbar-brand">
-            <img src="img/logo.png" height="45" alt="Logo">
-        </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <section id="contentDisplay" class="invisible">
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <a href="index.html" class="navbar-brand">
+                <img src="img/logo.png" height="45" alt="Logo">
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav">
-                <a href="#manageUsers" class="nav-item nav-link">Manage Users</a>
-                <a href="#manageDoctors" class="nav-item nav-link">Manage Doctors</a>
-                <a href="#manageGamification" class="nav-item nav-link">Manage Gamification</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="#manageUsers" class="nav-item nav-link">Manage Users</a>
+                    <a href="#manageDoctors" class="nav-item nav-link">Manage Doctors</a>
+                    <a href="#manageGamification" class="nav-item nav-link">Manage Gamification</a>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <section>
-        <div id="manageUsers" class="jumbotron text">
-            <h1>Manage Users</h1>
-        </div>
-
-        <div class="container">
-            <div class="row" id="adminUsersVisualization">
-                <!-- AdminView will fill here the Users -->
+        <section>
+            <div id="manageUsers" class="jumbotron text">
+                <h1>Manage Users</h1>
+                <p> Filter by First Name:</p>
+                <input id="adminFilterUsers" type="text" class="form-control col-md-2">
             </div>
-        </div>
+
+            <div class="container">
+                <div class="row" id="adminUsersVisualization">
+                    <!-- AdminView will fill here the Users -->
+                </div>
+            </div>
+
+        </section>
+
+        <section>
+            <div id="manageDoctors" class="jumbotron text">
+                <h1>Manage Doctors</h1>
+            </div>
+
+            <div class="container">
+                <div class="row">
+
+                </div>
+            </div>
+
+        </section>
+
+        <section>
+            <div id="manageGamification" class="jumbotron text">
+                <h1>Manage Gamification</h1>
+            </div>
+
+            <div class="container">
+                <div class="row">
+
+                </div>
+            </div>
+
+        </section>
 
     </section>
-
-    <section>
-        <div id="manageDoctors" class="jumbotron text">
-            <h1>Manage Doctors</h1>
-        </div>
-
-        <div class="container">
-            <div class="row">
-
-            </div>
-        </div>
-
-    </section>
-
-    <section>
-        <div id="manageGamification" class="jumbotron text">
-            <h1>Manage Gamification</h1>
-        </div>
-
-        <div class="container">
-            <div class="row">
-
-            </div>
-        </div>
-
-    </section>
-
     <script src="js/lib/jquery.min.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
     <script type="module" src="js/App.js"></script>

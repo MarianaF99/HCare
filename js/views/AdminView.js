@@ -7,8 +7,11 @@ export default class AdminView {
         this.adminController = new AdminController()
         this.userController = new UserController()
 
+        /* Admin Content Display */
+        this.contentDisplay = document.querySelector("#contentDisplay")
+
         /* Admin Login Modal */
-        this.adminModal = document.querySelector("#adminModal");
+        this.adminModal = document.querySelector("#adminModal")
 
         /* Admin Login Form */
         this.adminForm = document.querySelector("#adminForm")
@@ -17,18 +20,36 @@ export default class AdminView {
         this.adminMessage = document.querySelector("#adminMessage")
         this.BindAdminLoginForm()
         this.UpdateAdminModalState()
-
+        this.AdminPageContentSetDisplay()
 
         /* Manage Users */
         this.adminUsersVisualization = document.querySelector("#adminUsersVisualization")
-        this.UpdateUsersVisualization()
+        this.adminFilterUsers = document.querySelector("#adminFilterUsers")
+        this.BindFilterUsers()
+        this.UpdateUsersVisualization("")
     }
 
 
-    UpdateUsersVisualization() {
+    AdminPageContentSetDisplay() {
+        this.contentDisplay.style.className = '' /* Remove all classes */
+
+        if (this.adminController.IsAdminLogged() === true) {
+            this.contentDisplay.className = "visible";
+
+        } else {
+            this.contentDisplay.className = "invisible";
+        }
+    }
+
+    UpdateUsersVisualization(filterFirstName) {
+
         if (this.adminController.IsAdminLogged() === true) {
 
             let users = this.userController.GetAllUsers()
+
+            if (filterFirstName !== "") {
+                users = users.filter(user => user.firstName.toUpperCase().startsWith(filterFirstName.toUpperCase()))
+            }
 
             this.adminUsersVisualization.innerHTML = ""
 
@@ -57,6 +78,13 @@ export default class AdminView {
 
     GetBlockUnlockTextByState(blockState) {
         return (blockState === false) ? "Block" : "Unblock"
+    }
+
+    BindFilterUsers() {
+        adminFilterUsers.addEventListener('input', event => {
+            event.preventDefault()
+            this.UpdateUsersVisualization(adminFilterUsers.value)
+        })
     }
 
     BindBlockUnlockUserButton() {
