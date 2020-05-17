@@ -1,5 +1,5 @@
 export default class User {
-    constructor(firstName, surname, email, dateOfBirth, gender, address, phone, password, avatarSourceImage) {
+    constructor(firstName, surname, email, dateOfBirth, gender, address, phone, password, avatarSourceImage, blockState = false) {
         this.firstName = firstName
         this.surname = surname
         this.email = email
@@ -9,5 +9,6 @@ export default class User {
         this.phone = phone
         this.password = password
         this.avatarSourceImage = avatarSourceImage
+        this.blockState = blockState
     }
 }

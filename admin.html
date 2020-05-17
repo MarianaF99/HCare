@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HCare</title>
+    <meta name="description" content="HCare é um site de médicos ao domicilio">
+
+    <link rel="stylesheet" type="text/css" href="css/lib/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+</head>
+
+<body>
+
+
+    <div id="adminModal" class="adminModal">
+        <div class="modal-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form id="adminForm" role="form">
+                            <div class="col form-group br-radius-zero">
+                                <label>Your email </label>
+                                <input type="text" id="adminEmail" class="form-control" placeholder="" required>
+                            </div>
+
+                            <div class="col form-group br-radius-zero">
+                                <label>Your password</label>
+                                <input type="password" id="adminPassword" class="form-control" placeholder="" required>
+                            </div>
+
+                            <div class="col form-group br-radius-zero">
+                                <div id="adminMessage"></div>
+                                <button type="submit" class="btn btn-primary btn-block"> Login </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="#manageUsers" class="nav-item nav-link">Manage Users</a>
+                <a href="#manageDoctors" class="nav-item nav-link">Manage Doctors</a>
+                <a href="#manageGamification" class="nav-item nav-link">Manage Gamification</a>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <div id="manageUsers" class="jumbotron text">
+            <h1>Manage Users</h1>
+        </div>
+
+        <div class="container">
+            <div class="row" id="adminUsersVisualization">
+                <!-- AdminView will fill here the Users -->
+            </div>
+        </div>
+
+    </section>
+
+    <section>
+        <div id="manageDoctors" class="jumbotron text">
+            <h1>Manage Doctors</h1>
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+            </div>
+        </div>
+
+    </section>
+
+    <section>
+        <div id="manageGamification" class="jumbotron text">
+            <h1>Manage Gamification</h1>
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+            </div>
+        </div>
+
+    </section>
+
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script type="module" src="js/App.js"></script>
+</body>
+
+</html>

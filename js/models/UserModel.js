@@ -17,16 +17,29 @@ export default class LoginModel {
         return sessionStorage.getItem("loggedUser") !== null ? true : false
     }
 
-    GetUserLoggedData() {
-        let userLoggedEmail = this.GetUserLoggedEmail()
+    BlockUnlockUser(email) {
+        let blockState = false
 
         for (var i = 0; i < this.users.length; i++) {
-            if (this.users[i].email === userLoggedEmail) {
-                return this.users[i]
+            if (this.users[i].email === email) {
+                this.users[i].blockState = !this.users[i].blockState
+                blockState = this.users[i].blockState
+                break
             }
         }
+        this._Persist()
 
-        return null
+        return blockState
+    }
+
+    DeleteUser(email) {
+        this.users = this.users.filter(user => user.email != email)
+        this._Persist()
+    }
+
+    GetUserLoggedData() {
+        let userLoggedEmail = this.GetUserLoggedEmail()
+        return this.users.find(user => user.email === userLoggedEmail)
     }
 
     UpdateUser(email, firstName, surname, address, phone, password, changePasswordState) {

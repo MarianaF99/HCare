@@ -23,6 +23,19 @@ export default class UserController {
         this.userModel.UpdateUser(userLoggedEmail, firstName, surname, address, phone, password, changePasswordState)
     }
 
+    GetAllUsers() {
+        return this.userModel.GetAllUsers()
+    }
+
+    BlockUnlockUser(email) {
+        return this.userModel.BlockUnlockUser(email)
+    }
+
+    DeleteUser(email) {
+        this.userModel.DeleteUser(email)
+    }
+
+
     GetUserLoggedEmail() {
         return this.userModel.GetUserLoggedEmail()
     }
@@ -38,9 +51,13 @@ export default class UserController {
 
     Login(email, password) {
         if (this.userModel.GetAllUsers().some(user => user.email === email)) {
-            if (this.userModel.GetAllUsers().some(user2 => user2.email === email && user2.password === password)) {
-                this.userModel.Login(email)
-                window.location.replace("index.html")
+            if (this.userModel.GetAllUsers().some(user => user.email === email && user.password === password)) {
+                if (this.userModel.GetAllUsers().some(user => user.email === email && user.password === password && user.blockState === true)) {
+                    throw Error(`The user is blocked by the admin.`)
+                } else {
+                    this.userModel.Login(email)
+                    window.location.replace("index.html")
+                }
             } else {
                 throw Error(`The passord specified is wrong.`)
             }
