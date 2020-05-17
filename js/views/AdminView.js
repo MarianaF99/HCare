@@ -1,11 +1,6 @@
 import AdminController from '../controllers/AdminController.js'
 import UserController from '../controllers/UserController.js';
 
-/**
- * @class View
- *
- * Visual representation of the model.
- */
 export default class AdminView {
     constructor() {
 

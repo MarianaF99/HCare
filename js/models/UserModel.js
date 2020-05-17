@@ -2,7 +2,7 @@ import User from '../models/User.js'
 
 export default class LoginModel {
     constructor() {
-        this.users = JSON.parse(localStorage.getItem('users')) || []
+        this.users = this.GetAllUsersFromLocalStorage()
     }
 
     Logout() {
@@ -10,7 +10,10 @@ export default class LoginModel {
     }
 
     Login(email) {
+        /* Store the session to know that user is logged in */
         sessionStorage.setItem("loggedUser", email);
+        /* Remove the session for the admin as pre-caution */
+        sessionStorage.removeItem("loggedAdmin");
     }
 
     IsUserLogged() {
@@ -19,6 +22,7 @@ export default class LoginModel {
 
     BlockUnlockUser(email) {
         let blockState = false
+        this.UpdateAllUsersFromLocalStorage()
 
         for (var i = 0; i < this.users.length; i++) {
             if (this.users[i].email === email) {
@@ -43,7 +47,7 @@ export default class LoginModel {
     }
 
     UpdateUser(email, firstName, surname, address, phone, password, changePasswordState) {
-
+        this.UpdateAllUsersFromLocalStorage()
         for (var i = 0; i < this.users.length; i++) {
             if (this.users[i].email === email) {
                 this.users[i].firstName = firstName
@@ -66,11 +70,21 @@ export default class LoginModel {
         return email
     }
 
+    GetAllUsersFromLocalStorage() {
+        return JSON.parse(localStorage.getItem('users')) || []
+    }
+
+    UpdateAllUsersFromLocalStorage() {
+        this.users = this.GetAllUsersFromLocalStorage()
+    }
+
     GetAllUsers() {
+        this.UpdateAllUsersFromLocalStorage()
         return this.users
     }
 
     CreateUser(firstName, surname, email, dateOfBirth, gender, address, phone, password, avatarSourceImage) {
+        this.UpdateAllUsersFromLocalStorage()
         var newUser = new User(firstName, surname, email, dateOfBirth, gender, address, phone, password, avatarSourceImage);
         this.users.push(newUser);
         this._Persist();
@@ -82,7 +96,7 @@ export default class LoginModel {
     }
 
     PrintAllUsersFromLocalStorage() {
-
+        this.UpdateAllUsersFromLocalStorage()
         this.users.forEach(function(user, i) {
             console.log(i + " - " + user.firstName + " %% " + user.surname +
                 " %% " + user.email + " %% " + user.dateOfBirth +

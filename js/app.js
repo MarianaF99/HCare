@@ -1,5 +1,7 @@
-import UserView from '../js/views/UserView.js'
+import NavLinksView from '../js/views/NavLinksView.js'
 import AdminView from '../js/views/AdminView.js'
+import RegisterView from '../js/views/RegisterView.js'
+import EditProfileView from '../js/views/EditProfileView.js'
 
 class App {
     constructor() {
@@ -13,9 +15,15 @@ class App {
         switch (htmlFile) {
             case '':
             case 'index.html':
+                new NavLinksView()
+                break;
             case 'editProfile.html':
+                new EditProfileView()
+                new NavLinksView()
+                break;
             case 'register.html':
-                new UserView()
+                new NavLinksView()
+                new RegisterView()
                 break;
             case 'admin.html':
                 new AdminView()
