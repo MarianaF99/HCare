@@ -28,6 +28,10 @@ class App {
             case 'admin.html':
                 new AdminView()
                 break;
+            case 'ratings.html':
+                new EditProfileView()
+                new NavLinksView()
+                break;    
             default:
                 break;
         }
