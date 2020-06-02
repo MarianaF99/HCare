@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HCare</title>
+    <meta name="description" content="HCare é um site de médicos ao domicilio">
+
+    <link rel="stylesheet" type="text/css" href="css/lib/font-awesome.min.css">
+    <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+</head>
+
+<body>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <i class="closeModal fa fa-window-close"></i>
+                        <form id="loginForm" role="form">
+                            <div class="col form-group br-radius-zero">
+                                <label>Your email </label>
+                                <input type="text" id="loginEmail" class="form-control" placeholder="" required>
+                            </div>
+
+                            <div class="col form-group br-radius-zero">
+                                <label>Your password</label>
+                                <input type="password" id="loginPassword" class="form-control" placeholder="" required>
+                            </div>
+
+                            <div class="col form-group br-radius-zero">
+                                <div id="loginMessage"></div>
+                                <button type="submit" class="btn btn-primary btn-block"> Login </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a href="index.html" class="navbar-brand">
+            <img src="img/logo.png" height="45" alt="Logo">
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <a href="#" class="nav-item nav-link">Search Doctor </a>
+                <a href="ratings.html" class="nav-item nav-link">Doctor Ratings </a>
+            </div>
+            <div class="navbar-nav ml-auto">
+                <a href="#" id="loginStatusNavLink" class="nav-item nav-link visible"></a>
+                <a href="register.html" id="registerNavLink" class="nav-item nav-link"></a>
+                <a href="editProfile.html" id="editProfileNavLink" class="nav-item nav-link"></a>
+            </div>
+        </div>
+    </nav>
+
+    <!------- Ratings Table ------->
+
+    <div class="container mt-5">
+        <div class="lead">
+        <div class="form-group">
+            <p>Doctor Name</p>
+          <select id="doctor-select" class="form-control custom-select">
+              <option value="0" disabled selected>Doctor Name</option>
+              <option value="claire">Dr Claire Cardwell</option>
+              <option value="harry">Dr Harry Thompson</option>
+              <option value="james">Dr James Park</option>
+              <option value="josh">Dr Josh Smith</option>
+              <option value="taylor">Dr Taylor Evans</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <input type="number" id="rating-control" class="form-control" step="0.1" max="5" placeholder="Rate 1 - 5" disabled>
+        </div>
+      
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Doctor Name</th>
+              <th>Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="claire">
+              <td>Dr Claire Cardwell</td>
+              <td>
+                <div class="stars-outer">
+                  <div class="stars-inner"></div>
+                </div>
+                <span class="number-rating"></span>
+              </td>
+            </tr>
+            <tr class="harry">
+              <td>Dr Harry Thompson</td>
+              <td>
+                <div class="stars-outer">
+                  <div class="stars-inner"></div>
+                </div>
+                <span class="number-rating"></span>
+              </td>
+            </tr>
+            <tr class="james">
+              <td>Dr James Park</td>
+              <td>
+                <div class="stars-outer">
+                  <div class="stars-inner"></div>
+                </div>
+                <span class="number-rating"></span>
+              </td>
+            </tr>
+            <tr class="josh">
+              <td>Dr Josh Smith</td>
+              <td>
+                <div class="stars-outer">
+                  <div class="stars-inner"></div>
+                </div>
+                <span class="number-rating"></span>
+              </td>
+            </tr>
+            <tr class="taylor">
+              <td>Dr Taylor Evans</td>
+              <td>
+                <div class="stars-outer">
+                  <div class="stars-inner"></div>
+                </div>
+                <span class="number-rating"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+ </div>
+
+ <!--x----- Ratings Table -----x-->
+
+    <footer class="customFooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h6>About</h6>
+                    <p class="text-justify">Page in development phase.</p>
+                </div>
+                <div class="col-md-12">
+                    <h6>Admin Area</h6>
+                    <a href="admin.html" class="text-justify">Admin Page</a>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
+                        <a href="#">HCare</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script type="module" src="js/App.js"></script>
+    <script type="module" src="js/ratings.js"></script>
+</body>
+
+</html>
